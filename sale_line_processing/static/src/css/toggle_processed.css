@@ -1,0 +1,17 @@
+/* Piilota käsitellyt rivit, jos body:lla on o_hide_processed */
+.o_hide_processed tr.o_data_row:has(td[data-name="processed"] input[type="checkbox"]:checked),
+.o_hide_processed tr.o_data_row:has(td[name="processed"] input[type="checkbox"]:checked) {
+    display: none !important;
+}
+
+/* Suurempi klikkausalue ja osoitin myös tekstin päällä */
+.o_toggle_processed_checkbox {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+/* Tämä tekee koko tekstin klikkauksen tuntuiseksi */
+.o_toggle_processed_checkbox + span {
+    cursor: pointer;
+}
+

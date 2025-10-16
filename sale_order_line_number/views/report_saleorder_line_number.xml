@@ -1,0 +1,20 @@
+<odoo>
+  <data>
+    <template id="report_saleorder_line_number_inherit"
+              inherit_id="sale.report_saleorder_document">
+
+      <!-- Lisää otsikko rivinumerolle ennen kuvausta -->
+      <xpath expr="//th[@name='th_description']" position="before">
+        <th class="text-center" style="width:30px;">Rivi</th>
+      </xpath>
+
+      <!-- Lisää rivinumero ennen Description-saraketta -->
+      <xpath expr="//td[@name='td_name']" position="before">
+        <td class="text-center">
+          <span t-esc="line.line_number"/>
+        </td>
+      </xpath>
+
+    </template>
+  </data>
+</odoo>

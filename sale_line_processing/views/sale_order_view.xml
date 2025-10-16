@@ -1,0 +1,13 @@
+<odoo>
+    <record id="view_sale_order_form_toggle_processed" model="ir.ui.view">
+        <field name="name">sale.order.form.toggle.processed</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <!-- Lisätään processed-sarake näkyviin jos puuttuu -->
+            <xpath expr="//field[@name='order_line']//list" position="inside">
+                <field name="processed" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

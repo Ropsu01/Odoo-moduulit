@@ -1,0 +1,20 @@
+<odoo>
+  <record id="view_order_line_tree_room_number" model="ir.ui.view">
+    <field name="name">sale.order.line.tree.room.number</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.view_order_form"/>
+    <field name="arch" type="xml">
+
+      <xpath expr="//field[@name='order_line']//list//field[@name='product_template_id']" position="after">
+        <field name="room_number"/>
+      </xpath>
+
+      <!-- Määrä/huone ja huoneiden lukumäärä ennen product_uom_qty:tä -->
+      <xpath expr="//field[@name='order_line']//list//field[@name='product_uom_qty']" position="before">
+        <field name="qty_per_room"/>
+        <field name="rooms_count" readonly="1"/>
+      </xpath>
+
+    </field>
+  </record>
+</odoo>

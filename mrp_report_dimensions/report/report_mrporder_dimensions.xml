@@ -1,0 +1,47 @@
+<odoo>
+  <template id="report_mrporder_with_dimensions" inherit_id="mrp.report_mrp_production_components">
+    <!-- Lisää sarakkeet taulukon otsikkoon -->
+    <xpath expr="//table/thead/tr" position="inside">
+      <th>Pituus</th>
+      <th>Leveys</th>
+      <th>Korkeus</th>
+      <th>Mittayksikkö</th>
+    </xpath>
+
+    <!-- Lisää kentät datariviin -->
+    <xpath expr="//table/tbody/tr" position="inside">
+      <td><span t-field="raw_line.product_id.product_tmpl_id.product_length"/></td>
+      <td><span t-field="raw_line.product_id.product_tmpl_id.product_width"/></td>
+      <td><span t-field="raw_line.product_id.product_tmpl_id.product_height"/></td>
+      <td><span t-field="raw_line.product_id.product_tmpl_id.dimensional_uom_id"/></td>
+    </xpath>
+  </template>
+
+  <!-- Valmistettavan tuotteen mitat yläosaan -->
+  <template id="report_mrporder_add_product_dimensions" inherit_id="mrp.report_mrporder">
+  <xpath expr="//span[@t-field='o.product_id']" position="after">
+    <br/>
+    <small>
+      Pituus: <span t-field="o.product_id.product_tmpl_id.product_length"/> /
+      Leveys: <span t-field="o.product_id.product_tmpl_id.product_width"/> /
+      Korkeus: <span t-field="o.product_id.product_tmpl_id.product_height"/> /
+      <span t-field="o.product_id.product_tmpl_id.dimensional_uom_id"/>
+    </small>
+  </xpath>
+</template>
+
+<!-- Työtilauksen muokkaus -->
+  <template id="report_workorder_add_product_dimensions" inherit_id="mrp.report_mrp_workorder">
+    <xpath expr="//div[@class='col-3'][span[@t-field='o.product_id']]" position="inside">
+      <br/>
+      <small>
+        Pituus: <span t-field="o.product_id.product_tmpl_id.product_length"/> /
+        Leveys: <span t-field="o.product_id.product_tmpl_id.product_width"/> /
+        Korkeus: <span t-field="o.product_id.product_tmpl_id.product_height"/> /
+        <span t-field="o.product_id.product_tmpl_id.dimensional_uom_id"/>
+      </small>
+    </xpath>
+  </template>
+
+
+</odoo>

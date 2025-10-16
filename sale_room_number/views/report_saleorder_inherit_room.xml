@@ -1,0 +1,17 @@
+<odoo>
+    <template id="report_saleorder_document_inherit_room" inherit_id="sale.report_saleorder_document">
+
+        <!-- Lisää "Huone" otsikko ennen Quantity-saraketta -->
+        <xpath expr="//th[@name='th_quantity']" position="before">
+            <th class="text-start">Huone</th>
+        </xpath>
+
+        <!-- Lisää huonenumero ennen Quantity-saraketta -->
+        <xpath expr="//td[@name='td_quantity']" position="before">
+            <td class="text-start">
+                <span t-field="line.room_number"/>
+            </td>
+        </xpath>
+
+    </template>
+</odoo>

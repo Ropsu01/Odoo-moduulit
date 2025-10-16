@@ -1,0 +1,14 @@
+<odoo>
+    <record id="product_template_list_inherit_measurements" model="ir.ui.view">
+        <field name="name">product.template.list.inherit.measurements</field>
+        <field name="model">product.template</field>
+        <!-- varmista että tämä ID on oikea -->
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//list" position="inside">
+                <field name="x_measurements" string="Mittatiedot" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+

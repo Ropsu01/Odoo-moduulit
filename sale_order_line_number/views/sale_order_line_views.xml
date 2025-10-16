@@ -1,0 +1,31 @@
+<odoo>
+  <data>
+    <record id="view_sale_order_form_add_line_number" model="ir.ui.view">
+      <field name="name">sale.order.form.add.line.number</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.view_order_form"/>
+      <field name="arch" type="xml">
+
+        <!-- 1) Tee kahva näkymättömäksi -->
+        <xpath expr="//field[@name='order_line' and @widget='sol_o2m']/list/field[@name='sequence' and @widget='handle']"
+               position="attributes">
+          <attribute name="invisible">1</attribute>
+        </xpath>
+
+        <!-- 2) Näytä Rivi-sarake listassa (kahvan jälkeen) -->
+        <xpath expr="//field[@name='order_line' and @widget='sol_o2m']/list/field[@name='sequence' and @widget='handle']"
+               position="after">
+          <field name="line_number" string="Rivi"
+                 attrs="{'invisible': [('display_type','!=', False)]}"/>
+        </xpath>
+
+        <!-- 3) Näytä Rivi myös o2m-lomakkeessa ennen tuotetta -->
+        <xpath expr="//field[@name='order_line' and @widget='sol_o2m']/form//group[not(@invisible)]/group[1]"
+               position="inside">
+          <field name="line_number" attrs="{'invisible': [('display_type','!=', False)]}"/>
+        </xpath>
+
+      </field>
+    </record>
+  </data>
+</odoo>

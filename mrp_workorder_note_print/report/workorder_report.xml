@@ -1,0 +1,12 @@
+<odoo>
+  <template id="report_workorder_with_note" inherit_id="mrp.report_mrp_workorder">
+    <xpath expr="//div[@class='page']" position="inside">
+      <div class="row mt32 mb32">
+        <div class="col-12">
+          <h2>Ohje</h2>
+<p t-field="o.operation_note"/>
+        </div>
+      </div>
+    </xpath>
+  </template>
+</odoo>
